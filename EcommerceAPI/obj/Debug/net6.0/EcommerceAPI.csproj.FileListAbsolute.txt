@@ -36,3 +36,11 @@ C:\Users\eygdnet20\source\repos\EcommerceAPI\EcommerceAPI\obj\Debug\net6.0\refin
 C:\Users\eygdnet20\source\repos\EcommerceAPI\EcommerceAPI\obj\Debug\net6.0\EcommerceAPI.pdb
 C:\Users\eygdnet20\source\repos\EcommerceAPI\EcommerceAPI\obj\Debug\net6.0\EcommerceAPI.genruntimeconfig.cache
 C:\Users\eygdnet20\source\repos\EcommerceAPI\EcommerceAPI\obj\Debug\net6.0\ref\EcommerceAPI.dll
+C:\Users\eygdnet20\source\repos\EcommerceAPI\EcommerceAPI\bin\Debug\net6.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll
+C:\Users\eygdnet20\source\repos\EcommerceAPI\EcommerceAPI\bin\Debug\net6.0\Microsoft.IdentityModel.Abstractions.dll
+C:\Users\eygdnet20\source\repos\EcommerceAPI\EcommerceAPI\bin\Debug\net6.0\Microsoft.IdentityModel.JsonWebTokens.dll
+C:\Users\eygdnet20\source\repos\EcommerceAPI\EcommerceAPI\bin\Debug\net6.0\Microsoft.IdentityModel.Logging.dll
+C:\Users\eygdnet20\source\repos\EcommerceAPI\EcommerceAPI\bin\Debug\net6.0\Microsoft.IdentityModel.Protocols.dll
+C:\Users\eygdnet20\source\repos\EcommerceAPI\EcommerceAPI\bin\Debug\net6.0\Microsoft.IdentityModel.Protocols.OpenIdConnect.dll
+C:\Users\eygdnet20\source\repos\EcommerceAPI\EcommerceAPI\bin\Debug\net6.0\Microsoft.IdentityModel.Tokens.dll
+C:\Users\eygdnet20\source\repos\EcommerceAPI\EcommerceAPI\bin\Debug\net6.0\System.IdentityModel.Tokens.Jwt.dll

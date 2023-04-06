@@ -1,19 +1,40 @@
-using EcommerceAPI.DataAccess;
+using ECommerceAPI.DataAccess;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.IdentityModel.Tokens;
+using System.Text;
 
 var builder = WebApplication.CreateBuilder(args);
 
-// Add services to the container.
-var MyAllowSpecificOrigins = "_myAllowSpecificOrigins"; 
+var MyAllowSpecificOrigins = "_myAllowSpecificOrigins";
+// Add CORS
 builder.Services.AddCors(options =>
 {
     options.AddPolicy(name: MyAllowSpecificOrigins,
-        policy =>
-        {
-            policy.WithOrigins("http://localhost:52327").AllowAnyMethod().AllowAnyHeader().AllowAnyMethod().AllowAnyOrigin();
-        });
+                      policy =>
+                      {
+                          policy.WithOrigins("http://localhost:61273").AllowAnyMethod().AllowAnyHeader().AllowAnyOrigin();
+                      });
 });
 
+builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme).AddJwtBearer(x =>
+{
+    x.TokenValidationParameters = new Microsoft.IdentityModel.Tokens.TokenValidationParameters()
+    {
+        ValidateIssuer = true,
+        ValidateAudience = true,
+        ValidateLifetime = true,
+        ValidateIssuerSigningKey = true,
+        ValidIssuer = "localhost",
+        ValidAudience = "localhost",
+        IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes("MNU66iBl3T5rh6H52i69")),
+        ClockSkew = TimeSpan.Zero
+    };
+});
+
+// Add services to the container.
+
 builder.Services.AddControllers();
+// Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
@@ -30,7 +51,9 @@ if (app.Environment.IsDevelopment())
 
 app.UseHttpsRedirection();
 
-app.UseAuthorization(); 
+app.UseAuthentication();
+
+app.UseAuthorization();
 
 app.UseCors(MyAllowSpecificOrigins);
 
