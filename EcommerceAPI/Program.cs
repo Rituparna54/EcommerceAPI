@@ -1,11 +1,23 @@
+using EcommerceAPI.DataAccess;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
+var MyAllowSpecificOrigins = "_myAllowSpecificOrigins"; 
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy(name: MyAllowSpecificOrigins,
+        policy =>
+        {
+            policy.WithOrigins("http://localhost:52327").AllowAnyMethod().AllowAnyHeader().AllowAnyMethod().AllowAnyOrigin();
+        });
+});
 
 builder.Services.AddControllers();
-// Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+
+builder.Services.AddSingleton<IDataAccess, DataAccess>();
 
 var app = builder.Build();
 
@@ -18,7 +30,9 @@ if (app.Environment.IsDevelopment())
 
 app.UseHttpsRedirection();
 
-app.UseAuthorization();
+app.UseAuthorization(); 
+
+app.UseCors(MyAllowSpecificOrigins);
 
 app.MapControllers();
 
